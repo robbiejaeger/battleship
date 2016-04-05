@@ -6,4 +6,13 @@ class Repl
     "> "
   end
 
+  def load_instructions
+    instructions_file = File.open("./lib/instructions.txt", "r")
+    contents = instructions_file.read
+  end
+
+  def place_ships
+    
+  end
+
 end

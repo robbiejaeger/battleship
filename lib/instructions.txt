@@ -1,0 +1,11 @@
+*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*
+
+The game of Battleship takes place on a grid. You play against a ruthless computer
+with no emotions. Begin by placing your ships on the grid, and then take turns with
+the computer to torpedo positions on the grid.
+
+If all of the spots on your ship are hit by torpedoes by the computer, then the
+ship is sunk! Once all of your ships or the computer's ships are sunk, the game is
+over.
+
+*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*
