@@ -20,7 +20,6 @@ class GridTest < Minitest::Test
   end
 
   def test_can_convert_grid_to_string
-    grid = Grid.new
     player_grid = PlayerGrid.new
     string = "   Your Ships\n"\
              "   A  B  C  D\n"\

@@ -1,6 +1,7 @@
 require "./lib/game_time"
 require "./lib/repl"
 require "./lib/grid"
+require "./lib/computer_grid"
 require "./lib/player_grid"
 
 class Engine
@@ -8,8 +9,8 @@ class Engine
   def initialize
     @repl = Repl.new
     @gametime = GameTime.new
-    @grid = Grid.new
     @player_grid = PlayerGrid.new
+    @comp_grid = ComputerGrid.new
   end
 
 
@@ -39,7 +40,8 @@ class Engine
     game_over = false
     @gametime.set_start_time(Time.now)
 
-    place_ships_on_grid
+    comp_gen_ships_on_grid
+    player_put_ships_on_grid
 
     while game_over == false
       game_over = true
@@ -51,7 +53,11 @@ class Engine
   end
 
 
-  def place_ships_on_grid
+  def comp_gen_ships_on_grid
+
+  end
+
+  def player_put_ships_on_grid
     puts @repl.place_ships_description
   end
 

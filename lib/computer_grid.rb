@@ -9,4 +9,9 @@ class ComputerGrid < Grid
     @grid = gen_empty_grid
   end
 
+
+  def place_ships_on_grid
+    
+  end
+
 end
