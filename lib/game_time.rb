@@ -1,4 +1,4 @@
-class TimeOfGame
+class GameTime
 
   def initialize
     @start = 0
@@ -13,7 +13,7 @@ class TimeOfGame
     @finish = time
   end
 
-  def get_total_time
+  def get_time_elapsed
     elapsed_seconds = @finish.to_i - @start.to_i
     mins, secs = elapsed_seconds.divmod(60)
   end
