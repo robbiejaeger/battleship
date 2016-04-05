@@ -1,4 +1,5 @@
 require "./lib/grid"
+require "./lib/ship"
 
 class ComputerGrid < Grid
 

@@ -22,11 +22,11 @@ class GridTest < Minitest::Test
   def test_can_convert_grid_to_string
     player_grid = PlayerGrid.new
     string = "   Your Ships\n"\
-             "   A  B  C  D\n"\
-             "1  .  .  .  .\n"\
-             "2  .  .  .  .\n"\
-             "3  .  .  .  .\n"\
-             "4  .  .  .  .\n"
+             "   1  2  3  4\n"\
+             "A  .  .  .  .\n"\
+             "B  .  .  .  .\n"\
+             "C  .  .  .  .\n"\
+             "D  .  .  .  .\n"
 
     grid_string = player_grid.grid_to_string(player_grid.name, player_grid.grid)
 

@@ -15,11 +15,11 @@ class Grid
     column_label = ("1".."4").to_a
 
     to_print = "   #{title}\n"\
-               "   #{row_label.join("  ")}\n"\
-               "#{column_label[0]}  #{grid[0].join("  ")}\n"\
-               "#{column_label[1]}  #{grid[1].join("  ")}\n"\
-               "#{column_label[2]}  #{grid[2].join("  ")}\n"\
-               "#{column_label[3]}  #{grid[3].join("  ")}\n"
+               "   #{column_label.join("  ")}\n"\
+               "#{row_label[0]}  #{grid[0].join("  ")}\n"\
+               "#{row_label[1]}  #{grid[1].join("  ")}\n"\
+               "#{row_label[2]}  #{grid[2].join("  ")}\n"\
+               "#{row_label[3]}  #{grid[3].join("  ")}\n"
   end
 
 end
