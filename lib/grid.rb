@@ -5,21 +5,16 @@ class Grid
   end
 
 
-  def grid_to_string(player, grid)
-    if player == "player"
-      title = "Your Ships"
-    elsif player == "computer"
-      title = "Computer"
-    end
+  def grid_to_string
     row_label = ("A".."D").to_a
     column_label = ("1".."4").to_a
 
-    to_print = "   #{title}\n"\
-               "   #{column_label.join("  ")}\n"\
-               "#{row_label[0]}  #{grid[0].join("  ")}\n"\
-               "#{row_label[1]}  #{grid[1].join("  ")}\n"\
-               "#{row_label[2]}  #{grid[2].join("  ")}\n"\
-               "#{row_label[3]}  #{grid[3].join("  ")}\n"
+    to_print = "   #{column_label.join("  ")}\n"\
+               "#{row_label[0]}  #{@grid[0].join("  ")}\n"\
+               "#{row_label[1]}  #{@grid[1].join("  ")}\n"\
+               "#{row_label[2]}  #{@grid[2].join("  ")}\n"\
+               "#{row_label[3]}  #{@grid[3].join("  ")}\n"
+
   end
 
 end

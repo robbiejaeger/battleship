@@ -28,17 +28,17 @@ class PlayerTest < Minitest::Test
     player = Player.new
     input1 = "C4 D4  "
     input2 = "B1   B2  B3"
-    string = "   Your Ships\n"\
-             "   1  2  3  4\n"\
+    string = "   1  2  3  4\n"\
              "A  .  .  .  .\n"\
              "B  3  3  3  .\n"\
              "C  .  .  .  2\n"\
              "D  .  .  .  2\n"
 
+
     player.set_two_element_ship_on_grid(input1)
     player.set_three_element_ship_on_grid(input2)
     player.ships_grid.put_ship_letters_on_grid
-    output = player.ships_grid.grid_to_string(player.name, player.ships_grid.grid)
+    output = player.ships_grid.grid_to_string
 
     assert_equal string, output
   end

@@ -42,7 +42,7 @@ class Engine
     comp_gen_ships_on_grid
     player_put_ships_on_grid
 
-    continue_playing_until_winner
+    shoot_at_each_other_until_winner
 
     @gametime.set_finish_time(Time.now)
     mins, secs = @gametime.get_time_elapsed
@@ -50,7 +50,7 @@ class Engine
   end
 
 
-  def continue_playing_until_winner
+  def shoot_at_each_other_until_winner
     game_over = false
     while game_over == false
       game_over = true
@@ -67,7 +67,7 @@ class Engine
     puts @repl.place_ships_description
     print @repl.place_two_unit_ship
     @player.set_two_element_ship_on_grid(gets.chomp)
-    print @repl.place_three_unti_ship
+    print @repl.place_three_unit_ship
     @player.set_three_element_ship_on_grid(gets.chomp)
   end
 

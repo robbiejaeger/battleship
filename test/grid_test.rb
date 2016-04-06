@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "./lib/grid"
-require "./lib/player_grid"
+require "./lib/player"
 
 class GridTest < Minitest::Test
 
@@ -20,15 +20,15 @@ class GridTest < Minitest::Test
   end
 
   def test_can_convert_grid_to_string
-    player_grid = PlayerGrid.new
-    string = "   Your Ships\n"\
-             "   1  2  3  4\n"\
+    player = Player.new
+    string = "   1  2  3  4\n"\
              "A  .  .  .  .\n"\
              "B  .  .  .  .\n"\
              "C  .  .  .  .\n"\
              "D  .  .  .  .\n"
 
-    grid_string = player_grid.grid_to_string(player_grid.name, player_grid.grid)
+
+    grid_string = player.ships_grid.grid_to_string
 
     assert_equal string, grid_string
   end

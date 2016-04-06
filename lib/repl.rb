@@ -21,7 +21,7 @@ class Repl
     "Enter the coordinates for the two-unit ship: "
   end
 
-  def place_three_unti_ship
+  def place_three_unit_ship
     "Enter the coordinates for the three-unit ship: "
   end
 
