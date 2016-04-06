@@ -43,13 +43,18 @@ class Engine
     comp_gen_ships_on_grid
     player_put_ships_on_grid
 
-    while game_over == false
-      game_over = true
-    end
+    continue_playing_until_winner(game_over)
 
     @gametime.set_finish_time(Time.now)
     mins, secs = @gametime.get_time_elapsed
     true
+  end
+
+
+  def continue_playing_until_winner(game_over)
+    while game_over == false
+      game_over = true
+    end
   end
 
 
