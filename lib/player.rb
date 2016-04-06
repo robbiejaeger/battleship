@@ -25,6 +25,7 @@ class Player
 
   def set_three_element_ship_on_grid(input)
     @ships_grid.three_ship.coordinates = convert_player_input_to_coordinates(input)
+    @ships_grid.put_ship_letters_on_grid
   end
 
 end

@@ -28,11 +28,11 @@ class ComputerTest < Minitest::Test
   def test_can_show_grid_with_ships
     skip
     # Skipped because the output is random, no way to test string...
-    comp_grid = ComputerGrid.new
-    comp_grid.place_ships_on_grid
-    comp_grid.put_ship_letters_on_grid
+    comp = Computer.new
+    comp.place_ships_on_grid
 
-    comp_grid.grid_to_string(comp_grid.name,comp_grid.grid)
+    print "\n"
+    puts comp.ships_grid.grid_to_string
   end
 
 end

@@ -24,6 +24,7 @@ class Computer
           unique = false
         end
       end
+      @ships_grid.put_ship_letters_on_grid
   end
 
   def place_two_element_ship_on_grid
