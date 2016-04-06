@@ -59,12 +59,16 @@ class Engine
 
 
   def comp_gen_ships_on_grid
-
+    @comp_grid.place_ships_on_grid
   end
 
 
   def player_put_ships_on_grid
     puts @repl.place_ships_description
+    print @repl.place_two_unit_ship
+    @player_grid.set_two_element_ship_on_grid(gets.chomp)
+    print @repl.place_three_unti_ship
+    @player_grid.set_three_element_ship_on_grid(gets.chomp)
   end
 
 end

@@ -16,7 +16,7 @@ class ComputerGrid < Grid
   def place_ships_on_grid
     place_two_element_ship_on_grid
     unique = false
-      while unique == false
+      until unique == true
         place_three_element_ship_on_grid
         if (@two_ship.coordinates & @three_ship.coordinates).empty?
           unique = true
