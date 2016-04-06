@@ -21,14 +21,16 @@ class ComputerGridTest < Minitest::Test
     comp_grid = ComputerGrid.new
     comp_grid.place_ships_on_grid
 
-    result = (comp_grid.two_ship.coordinates & comp_grid.three_ship.coordinates).empty?
-
-    assert result
+    assert (comp_grid.two_ship.coordinates & comp_grid.three_ship.coordinates).empty?
   end
 
   def test_can_show_grid_with_ships
+    skip
     comp_grid = ComputerGrid.new
-    
+    comp_grid.place_ships_on_grid
+    comp_grid.put_ship_letters_on_grid
+
+    comp_grid.grid_to_string(comp_grid.name,comp_grid.grid)
   end
 
 end

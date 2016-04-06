@@ -44,4 +44,13 @@ class ComputerGrid < Grid
     end
   end
 
+  def put_ship_letters_on_grid
+    @two_ship.coordinates.each do |coordinate|
+      @grid[coordinate[0]][coordinate[1]] = "2"
+    end
+    @three_ship.coordinates.each do |coordinate|
+      @grid[coordinate[0]][coordinate[1]] = "3"
+    end
+  end
+
 end
