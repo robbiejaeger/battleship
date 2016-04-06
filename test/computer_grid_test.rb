@@ -17,8 +17,17 @@ class ComputerGridTest < Minitest::Test
     assert_equal grid_array, comp_grid.grid
   end
 
-  def test_can_place_one_ship_on_grid
-    skip
+  def test_can_place_two_unique_ships_on_grid
+    comp_grid = ComputerGrid.new
+    comp_grid.place_ships_on_grid
+
+    result = (comp_grid.two_ship.coordinates & comp_grid.three_ship.coordinates).empty?
+
+    assert result
+  end
+
+  def test_can_show_grid_with_ships
+    comp_grid = ComputerGrid.new
     
   end
 

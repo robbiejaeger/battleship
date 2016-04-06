@@ -8,6 +8,8 @@ class PlayerGrid < Grid
   def initialize
     @name = "player"
     @grid = gen_empty_grid
+    @two_ship = Ship.new(2)
+    @three_ship = Ship.new(3)
   end
 
 end
