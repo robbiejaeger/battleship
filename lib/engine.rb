@@ -53,6 +53,8 @@ class Engine
   def shoot_at_each_other_until_winner
     game_over = false
     while game_over == false
+      puts @repl.get_players_shot(@player.guesses_grid.grid_to_string)
+      @player.get_guess(gets.chomp)
       game_over = true
     end
   end

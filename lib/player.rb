@@ -13,19 +13,34 @@ class Player
     @guesses = []
   end
 
-  def convert_player_input_to_coordinates(input)
+  def convert_ship_input_to_coordinates(input)
     array_of_strings = input.tr("1234","0123").tr("ABCD", "0123").split("")
     array_of_numbers = array_of_strings.reject { |e| e == " " }.map {|e| e.to_i}
     coordinates = array_of_numbers.each_slice(2).to_a
   end
 
   def set_two_element_ship_on_grid(input)
-    @ships_grid.two_ship.coordinates = convert_player_input_to_coordinates(input)
+    @ships_grid.two_ship.coordinates = convert_ship_input_to_coordinates(input)
   end
 
   def set_three_element_ship_on_grid(input)
-    @ships_grid.three_ship.coordinates = convert_player_input_to_coordinates(input)
+    @ships_grid.three_ship.coordinates = convert_ship_input_to_coordinates(input)
     @ships_grid.put_ship_letters_on_grid
+  end
+
+  def get_guess(input)
+    guess_coordinates = convert_guess_input_to_coordinates(input)
+    # Need to test if this is within the boundary of the grid
+    if (guess_coordinates & @guesses).empty?
+      @guesses << guess_coordinates
+    else
+      # Guess again
+    end
+  end
+
+  def convert_guess_input_to_coordinates(input)
+    array_of_strings = input.tr("1234","0123").tr("ABCD", "0123").split("")
+    coordinates = array_of_strings.reject { |e| e == " " }.map {|e| e.to_i}
   end
 
 end

@@ -19,7 +19,7 @@ class PlayerTest < Minitest::Test
     input = "B1 B2 B3"
     correct_coordinates = [[1,0],[1,1],[1,2]]
 
-    coordinates = player.convert_player_input_to_coordinates(input)
+    coordinates = player.convert_ship_input_to_coordinates(input)
 
     assert_equal correct_coordinates, coordinates
   end
@@ -41,6 +41,15 @@ class PlayerTest < Minitest::Test
     output = player.ships_grid.grid_to_string
 
     assert_equal string, output
+  end
+
+  def test_player_can_have_a_guess
+    player = Player.new
+    guess = [[0,0]]
+
+    player.get_guess("A1")
+
+    assert_equal guess, player.guesses
   end
 
 end

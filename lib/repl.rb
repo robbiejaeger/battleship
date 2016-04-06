@@ -25,4 +25,10 @@ class Repl
     "Enter the coordinates for the three-unit ship: "
   end
 
+  def get_players_shot(player_guess_grid)
+    "Your hit and miss history:\n"\
+    "#{player_guess_grid}\n"\
+    "What is your next shot? "
+  end
+
 end
