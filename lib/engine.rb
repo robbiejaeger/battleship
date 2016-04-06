@@ -39,7 +39,7 @@ class Engine
   def play
     @gametime.set_start_time(Time.now)
 
-    comp_gen_ships_on_grid
+    @comp.place_ships_on_grid
     player_put_ships_on_grid
 
     shoot_at_each_other_until_winner
@@ -53,15 +53,12 @@ class Engine
   def shoot_at_each_other_until_winner
     game_over = false
     while game_over == false
-      puts @repl.get_players_shot(@player.guesses_grid.grid_to_string)
-      @player.get_guess(gets.chomp)
+      print @repl.get_players_shot(@player.guesses_grid.grid_to_string)
+
+      get_player_guess
+
       game_over = true
     end
-  end
-
-
-  def comp_gen_ships_on_grid
-    @comp.place_ships_on_grid
   end
 
 
@@ -71,6 +68,14 @@ class Engine
     @player.set_two_element_ship_on_grid(gets.chomp)
     print @repl.place_three_unit_ship
     @player.set_three_element_ship_on_grid(gets.chomp)
+  end
+
+
+  def get_player_guess
+    valid_guess = false
+    while valid_guess == false
+      valid_guess = @player.get_guess(gets.chomp)
+    end
   end
 
 end

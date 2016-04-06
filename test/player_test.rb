@@ -52,4 +52,25 @@ class PlayerTest < Minitest::Test
     assert_equal guess, player.guesses
   end
 
+  def test_player_can_have_multiple_guesses
+    player = Player.new
+    guess = [[0,0],[1,0],[2,0]]
+
+    player.get_guess("A1")
+    player.get_guess("B1")
+    player.get_guess("C1")
+
+    assert_equal guess, player.guesses
+  end
+
+  def test_cannot_have_duplicate_guesses
+    player = Player.new
+    guess = [[0,0]]
+
+    player.get_guess("A1")
+    player.get_guess("A1")
+
+    assert_equal guess, player.guesses
+  end
+
 end
