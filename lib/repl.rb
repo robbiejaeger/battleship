@@ -75,4 +75,8 @@ class Repl
     "\nGrab your lifejacket! Let the battle begin!\n\n"
   end
 
+  def guess_to_long_or_short
+    "Guess must be two characters. Guess again: "
+  end
+
 end

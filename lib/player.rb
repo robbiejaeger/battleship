@@ -1,6 +1,7 @@
 require "./lib/ships_grid"
 require "./lib/guesses_grid"
 
+
 class Player
 
   attr_reader :name
@@ -34,7 +35,7 @@ class Player
 
   def test_guess(input)
     if input.length <= 1 || input.length > 2
-      print "Guess must be two characters. Guess again: "
+      print "Shot must be two characters. Guess again: "
       return false
     end
     guess_coordinates = convert_guess_input_to_coordinates(input)
@@ -43,7 +44,6 @@ class Player
       @guesses << guess_coordinates
       # Send guess to ships_grid/guesses_grid to be marked or checked
       true
-
     else
       print "You already shot there. Pick another spot: "
       false

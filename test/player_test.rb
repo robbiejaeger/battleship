@@ -17,7 +17,7 @@ class PlayerTest < Minitest::Test
   def test_can_convert_input_to_coordinates
     player = Player.new
     input = "B1 B2 B3"
-    correct_coordinates = [[1,0],[1,1],[1,2]]
+    correct_coordinates = [[0,1],[1,1],[2,1]]
 
     coordinates = player.convert_ship_input_to_coordinates(input)
 
@@ -28,11 +28,11 @@ class PlayerTest < Minitest::Test
     player = Player.new
     input1 = "C4 D4  "
     input2 = "B1   B2  B3"
-    string = "   1  2  3  4\n"\
-             "A  .  .  .  .\n"\
-             "B  3  3  3  .\n"\
-             "C  .  .  .  2\n"\
-             "D  .  .  .  2\n"
+    string = "   A  B  C  D\n"\
+             "1  .  3  .  .\n"\
+             "2  .  3  .  .\n"\
+             "3  .  3  .  .\n"\
+             "4  .  .  2  2\n"
 
 
     player.set_two_element_ship_on_grid(input1)
@@ -54,7 +54,7 @@ class PlayerTest < Minitest::Test
 
   def test_player_can_have_multiple_guesses
     player = Player.new
-    guess = [[0,0],[1,0],[2,0]]
+    guess = [[0,0],[0,1],[0,2]]
 
     player.test_guess("A1")
     player.test_guess("B1")
@@ -64,6 +64,7 @@ class PlayerTest < Minitest::Test
   end
 
   def test_cannot_have_duplicate_guesses
+    skip
     player = Player.new
     guess = [[0,0]]
 
@@ -71,6 +72,15 @@ class PlayerTest < Minitest::Test
     player.test_guess("A1")
 
     assert_equal guess, player.guesses
+  end
+
+  def test_cannot_guess_too_long
+    skip
+    player = Player.new
+
+    result = player.test_guess("AAAAA")
+
+    refute result
   end
 
 end

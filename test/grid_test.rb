@@ -21,11 +21,11 @@ class GridTest < Minitest::Test
 
   def test_can_convert_grid_to_string
     player = Player.new
-    string = "   1  2  3  4\n"\
-             "A  .  .  .  .\n"\
-             "B  .  .  .  .\n"\
-             "C  .  .  .  .\n"\
-             "D  .  .  .  .\n"
+    string = "   A  B  C  D\n"\
+             "1  .  .  .  .\n"\
+             "2  .  .  .  .\n"\
+             "3  .  .  .  .\n"\
+             "4  .  .  .  .\n"
 
 
     grid_string = player.ships_grid.grid_to_string
@@ -35,11 +35,11 @@ class GridTest < Minitest::Test
 
   def test_can_mark_point_with_miss
     player = Player.new
-    string = "   1  2  3  4\n"\
-             "A  M  .  .  .\n"\
-             "B  .  .  .  .\n"\
-             "C  .  .  .  .\n"\
-             "D  .  .  .  .\n"
+    string = "   A  B  C  D\n"\
+             "1  \033[33mM\033[0m  .  .  .\n"\
+             "2  .  .  .  .\n"\
+             "3  .  .  .  .\n"\
+             "4  .  .  .  .\n"
 
     player.ships_grid.mark_miss([0,0])
 
@@ -48,11 +48,11 @@ class GridTest < Minitest::Test
 
   def test_can_mark_point_with_hit
     player = Player.new
-    string = "   1  2  3  4\n"\
-             "A  H  .  .  .\n"\
-             "B  .  .  .  .\n"\
-             "C  .  .  .  .\n"\
-             "D  .  .  .  .\n"
+    string = "   A  B  C  D\n"\
+             "1  \033[31mH\033[0m  .  .  .\n"\
+             "2  .  .  .  .\n"\
+             "3  .  .  .  .\n"\
+             "4  .  .  .  .\n"
 
     player.ships_grid.mark_hit([0,0])
 
