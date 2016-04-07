@@ -46,7 +46,7 @@ class Engine
 
     @gametime.set_finish_time(Time.now)
     mins, secs = @gametime.get_time_elapsed
-    true
+    puts @repl.time_of_game(mins, secs)
   end
 
 

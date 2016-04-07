@@ -79,4 +79,8 @@ class Repl
     "Guess must be two characters. Guess again: "
   end
 
+  def time_of_game(mins, secs)
+    "The total time of the game was #{mins} minutes and #{secs} seconds."
+  end
+
 end
