@@ -35,4 +35,13 @@ class ComputerTest < Minitest::Test
     puts comp.ships_grid.grid_to_string
   end
 
+  def test_can_gen_unique_shot
+    comp = Computer.new
+    comp.guesses = [[0,0],[0,1],[0,2]]
+
+    coordinate = comp.gen_shot
+
+    assert (comp.guesses & coordinate).empty?
+  end
+
 end

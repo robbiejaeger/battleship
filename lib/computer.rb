@@ -45,4 +45,13 @@ class Computer
     end
   end
 
+  def gen_shot
+    unique = false
+    while unique == false
+      coordinate = [rand(4),rand(4)]
+      unique = true if ([coordinate] & @guesses).empty?
+    end
+    coordinate
+  end
+
 end

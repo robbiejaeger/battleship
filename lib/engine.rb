@@ -83,8 +83,8 @@ class Engine
   def player_shot_sequence
     guess_coordinate = get_player_guess
     @player.guesses << guess_coordinate
+
     hit = @comp.ships_grid.two_ship.hit?(guess_coordinate)
-    # test is player has hit computer's ship
     if hit
       @player.guesses_grid.mark_hit(guess_coordinate)
       @comp.ships_grid.mark_hit(guess_coordinate)
@@ -114,6 +114,34 @@ class Engine
   end
 
   def computer_shot_sequence
+    guess_coordinate = @comp.gen_shot
+    @comp.guesses << guess_coordinate
+
+    hit = @player.ships_grid.two_ship.hit?(guess_coordinate)
+    if hit
+      @comp.guesses_grid.mark_hit(guess_coordinate)
+      @player.ships_grid.mark_hit(guess_coordinate)
+      puts @repl.computer_hits_computer_ship
+    else
+      hit = @cplayer.ships_grid.three_ship.hit?(guess_coordinate)
+      if hit
+        @comp.guesses_grid.mark_hit(guess_coordinate)
+        @player.ships_grid.mark_hit(guess_coordinate)
+        puts @repl.computer_hits_computer_ship
+      else
+        @comp.guesses_grid.mark_miss(guess_coordinate)
+        @player.ships_grid.mark_miss(guess_coordinate)
+        puts @repl.computer_misses_computer_ship
+      end
+    end
+    if @player.ships_grid.two_ship.sunk? && @player.ships_grid.three_ship.sunk?
+      puts @player.ships_grid.grid_to_string
+      puts @repl.computer_wins_game
+      true
+    else
+      puts @player.ships_grid.grid_to_string
+      false
+    end
   end
 
 end
