@@ -40,7 +40,6 @@ class Player
     end
     guess_coordinates = convert_guess_input_to_coordinates(input)
     if ([guess_coordinates] & @guesses).empty?
-      @guesses << guess_coordinates
       true
     else
       print "You already shot there. Pick another spot: "
