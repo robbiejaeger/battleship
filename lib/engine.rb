@@ -55,7 +55,7 @@ class Engine
     while game_over == false
       print @repl.get_players_shot(@player.guesses_grid.grid_to_string)
 
-      get_player_guess
+      player_shot_sequence
 
       game_over = true
     end
@@ -76,6 +76,12 @@ class Engine
     while valid_guess == false
       valid_guess = @player.get_guess(gets.chomp)
     end
+  end
+
+
+  def player_shot_sequence
+    get_player_guess
+    
   end
 
 end

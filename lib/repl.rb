@@ -31,4 +31,28 @@ class Repl
     "What is your next shot? "
   end
 
+  def player_hits_computer_ship
+    "HIT!"
+  end
+
+  def player_misses_computer_ship
+    "MISS!"
+  end
+
+  def computer_hits_players_ship
+    "You've been hit!"
+  end
+
+  def computer_misses_players_ship
+    "A lucky miss!"
+  end
+
+  def player_sunk_computers_ship
+    "You've sunk a ship!"
+  end
+
+  def computer_sinks_players_ship
+    "Oh no! Your ship has been sunk!"
+  end
+
 end

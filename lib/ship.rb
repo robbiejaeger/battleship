@@ -1,11 +1,26 @@
 class Ship
 
-  attr_reader :num_elements
+  attr_reader :num_elements, :coordinates_hit, :sunk
   attr_accessor :coordinates
 
   def initialize(num_elements)
     @num_elements = num_elements
     @coordinates = []
+    @coordinates_hit = []
+    @sunk = false
+  end
+
+
+  def hit?(guess_coordinate)
+    return false if (@coordinates & [guess_coordinate]).empty?
+    @coordinates_hit << guess_coordinate
+    # true
+  end
+
+
+  def sunk?
+    return false if @coordinates_hit.sort != @coordinates.sort
+    @sunk = true
   end
 
 
