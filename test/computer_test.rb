@@ -14,10 +14,6 @@ class ComputerTest < Minitest::Test
     assert_equal [], comp.guesses
   end
 
-  def test_can_place_two_element_ship_on_grid
-
-  end
-
   def test_can_place_two_unique_ships_on_grid
     comp = Computer.new
     comp.place_ships_on_grid
@@ -42,6 +38,16 @@ class ComputerTest < Minitest::Test
     coordinate = comp.gen_shot
 
     assert (comp.guesses & coordinate).empty?
+  end
+
+  def test_can_convert_coordinate_to_grid
+    comp = Computer.new
+    coordinate = [1,1]
+    grid = "B2"
+
+    result = comp.convert_coordinate_to_grid(coordinate)
+
+    assert_equal grid, result
   end
 
 end

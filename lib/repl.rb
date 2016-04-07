@@ -67,4 +67,12 @@ class Repl
     "Press ENTER to continue."
   end
 
+  def comp_shot_at(location)
+    "The computer shot at location #{location}."
+  end
+
+  def begin_battle
+    "\nGrab your lifejacket! Let the battle begin!\n\n"
+  end
+
 end

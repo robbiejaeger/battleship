@@ -17,7 +17,7 @@ class Player
   def convert_ship_input_to_coordinates(input)
     array_of_strings = input.tr("1234","0123").tr("ABCD", "0123").split("")
     array_of_numbers = array_of_strings.reject { |e| e == " " }.map {|e| e.to_i}
-    coordinates = array_of_numbers.each_slice(2).to_a
+    coordinates = array_of_numbers.each_slice(2).to_a.map {|a| a.reverse}
   end
 
 
@@ -33,13 +33,19 @@ class Player
 
 
   def test_guess(input)
+    if input.length <= 1 || input.length > 2
+      print "Guess must be two characters. Guess again: "
+      return false
+    end
     guess_coordinates = convert_guess_input_to_coordinates(input)
     # Need to test if this is within the boundary of the grid
     if ([guess_coordinates] & @guesses).empty?
       @guesses << guess_coordinates
       # Send guess to ships_grid/guesses_grid to be marked or checked
       true
+
     else
+      print "You already shot there. Pick another spot: "
       false
     end
   end
@@ -47,7 +53,7 @@ class Player
 
   def convert_guess_input_to_coordinates(input)
     array_of_strings = input.tr("1234","0123").tr("ABCD", "0123").split("")
-    coordinates = array_of_strings.reject { |e| e == " " }.map {|e| e.to_i}
+    coordinates = array_of_strings.reject { |e| e == " " }.map {|e| e.to_i}.reverse
   end
 
 end

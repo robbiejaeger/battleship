@@ -6,8 +6,8 @@ class Grid
 
 
   def grid_to_string
-    row_label = ("A".."D").to_a
-    column_label = ("1".."4").to_a
+    row_label = ("1".."4").to_a
+    column_label = ("A".."D").to_a
 
     to_print = "   #{column_label.join("  ")}\n"\
                "#{row_label[0]}  #{@grid[0].join("  ")}\n"\
@@ -18,11 +18,11 @@ class Grid
   end
 
   def mark_hit(coordinate)
-    @grid[coordinate[0]][coordinate[1]] = "H"
+    @grid[coordinate[0]][coordinate[1]] = "\033[31mH\033[0m"
   end
 
   def mark_miss(coordinate)
-    @grid[coordinate[0]][coordinate[1]] = "M"
+    @grid[coordinate[0]][coordinate[1]] = "\033[33mM\033[0m"
   end
 
 end

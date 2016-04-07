@@ -56,7 +56,9 @@ class Engine
       print @repl.get_players_shot(@player.guesses_grid.grid_to_string)
 
       game_over = player_shot_sequence
-      game_over = computer_shot_sequence
+      if game_over == false
+        game_over = computer_shot_sequence
+      end
     end
   end
 
@@ -64,16 +66,18 @@ class Engine
   def player_put_ships_on_grid
     puts @repl.place_ships_description
     print @repl.place_two_unit_ship
-    @player.set_two_element_ship_on_grid(gets.chomp)
+    @player.set_two_element_ship_on_grid(gets.chomp.upcase)
     print @repl.place_three_unit_ship
-    @player.set_three_element_ship_on_grid(gets.chomp)
+    @player.set_three_element_ship_on_grid(gets.chomp.upcase)
+
+    puts @repl.begin_battle
   end
 
 
   def get_player_guess
     valid_guess = false
     while valid_guess == false
-      guess = gets.chomp
+      guess = gets.chomp.upcase
       valid_guess = @player.test_guess(guess)
     end
     @player.convert_guess_input_to_coordinates(guess)
@@ -114,24 +118,26 @@ class Engine
   end
 
   def computer_shot_sequence
-    guess_coordinate = @comp.gen_shot
+    guess_coordinate, grid_coordinate = @comp.gen_shot
     @comp.guesses << guess_coordinate
+    grid_coordinate = @comp.convert_coordinate_to_grid(guess_coordinate)
+    puts @repl.comp_shot_at(grid_coordinate)
 
     hit = @player.ships_grid.two_ship.hit?(guess_coordinate)
     if hit
       @comp.guesses_grid.mark_hit(guess_coordinate)
       @player.ships_grid.mark_hit(guess_coordinate)
-      puts @repl.computer_hits_computer_ship
+      puts @repl.computer_hits_players_ship
     else
-      hit = @cplayer.ships_grid.three_ship.hit?(guess_coordinate)
+      hit = @player.ships_grid.three_ship.hit?(guess_coordinate)
       if hit
         @comp.guesses_grid.mark_hit(guess_coordinate)
         @player.ships_grid.mark_hit(guess_coordinate)
-        puts @repl.computer_hits_computer_ship
+        puts @repl.computer_hits_players_ship
       else
         @comp.guesses_grid.mark_miss(guess_coordinate)
         @player.ships_grid.mark_miss(guess_coordinate)
-        puts @repl.computer_misses_computer_ship
+        puts @repl.computer_misses_players_ship
       end
     end
     if @player.ships_grid.two_ship.sunk? && @player.ships_grid.three_ship.sunk?

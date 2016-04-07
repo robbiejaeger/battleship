@@ -13,6 +13,7 @@ class Computer
     @guesses = []
   end
 
+
   def place_ships_on_grid
     place_two_element_ship_on_grid
     unique = false
@@ -27,6 +28,7 @@ class Computer
       @ships_grid.put_ship_letters_on_grid
   end
 
+
   def place_two_element_ship_on_grid
     num = rand(2)
     if num == 0
@@ -35,6 +37,7 @@ class Computer
       @ships_grid.two_ship.gen_horizontal_ship
     end
   end
+
 
   def place_three_element_ship_on_grid
     num = rand(2)
@@ -45,13 +48,22 @@ class Computer
     end
   end
 
+
   def gen_shot
     unique = false
     while unique == false
       coordinate = [rand(4),rand(4)]
       unique = true if ([coordinate] & @guesses).empty?
     end
-    coordinate
+    grid_location = convert_coordinate_to_grid(coordinate)
+    return coordinate, grid_location
+  end
+
+
+  def convert_coordinate_to_grid(coordinate)
+    grid_x = coordinate[0].to_s.tr("0123","ABCD")
+    grid_y = coordinate[1].to_s.tr("0123","1234")
+    grid = grid_x + grid_y
   end
 
 end
