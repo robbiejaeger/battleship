@@ -61,9 +61,9 @@ class Computer
 
 
   def convert_coordinate_to_grid(coordinate)
-    grid_x = coordinate[0].to_s.tr("0123","ABCD")
-    grid_y = coordinate[1].to_s.tr("0123","1234")
-    grid = grid_x + grid_y
+    grid_x = coordinate[0].to_s.tr("0123","1234")
+    grid_y = coordinate[1].to_s.tr("0123","ABCD")
+    grid = grid_y + grid_x
   end
 
 end
