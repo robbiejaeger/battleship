@@ -39,10 +39,8 @@ class Player
       return false
     end
     guess_coordinates = convert_guess_input_to_coordinates(input)
-    # Need to test if this is within the boundary of the grid
     if ([guess_coordinates] & @guesses).empty?
       @guesses << guess_coordinates
-      # Send guess to ships_grid/guesses_grid to be marked or checked
       true
     else
       print "You already shot there. Pick another spot: "

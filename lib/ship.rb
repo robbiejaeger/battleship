@@ -28,7 +28,6 @@ class Ship
     end_point = start_point + (@num_elements - 1)
     columns = [(0..3).to_a.sample]*@num_elements
     rows = (start_point..end_point).to_a
-
     @coordinates = columns.zip(rows)
   end
 
@@ -38,7 +37,6 @@ class Ship
     end_point = start_point + (@num_elements - 1)
     rows = [(0..3).to_a.sample]*@num_elements
     columns = (start_point..end_point).to_a
-
     @coordinates = columns.zip(rows)
   end
 
