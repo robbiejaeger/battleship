@@ -7,7 +7,6 @@ require "./lib/player"
 class Engine
 
   def initialize
-    @repl = Repl.new
     @gametime = GameTime.new
     @player = Player.new
     @comp = Computer.new
@@ -16,8 +15,8 @@ class Engine
 
   def start_game_sequence
     quit = false
-    while quit == false
-      print @repl.opening_text
+    until quit == true
+      print Repl.opening_text
       answer = gets.chomp.downcase
       quit = decide_to_play_or_quit(answer)
     end
@@ -28,7 +27,7 @@ class Engine
     if answer == 'p' || answer == 'play'
       play
     elsif answer == 'i' || answer == 'instructions'
-      puts @repl.load_instructions
+      puts Repl.load_instructions
       false
     elsif answer == 'q' || answer == 'quit'
       true
@@ -46,14 +45,14 @@ class Engine
 
     @gametime.set_finish_time(Time.now)
     mins, secs = @gametime.get_time_elapsed
-    puts @repl.time_of_game(mins, secs)
+    puts Repl.time_of_game(mins, secs)
   end
 
 
   def shoot_at_each_other_until_winner
     game_over = false
-    while game_over == false
-      print @repl.get_players_shot(@player.guesses_grid.grid_to_string)
+    until game_over == true
+      print Repl.get_players_shot(@player.guesses_grid.grid_to_string)
 
       game_over = player_shot_sequence
       if game_over == false
@@ -65,13 +64,13 @@ class Engine
 
   def player_put_ships_on_grid
     puts @player.guesses_grid.grid_to_string
-    puts @repl.place_ships_description
-    print @repl.place_two_unit_ship
+    puts Repl.place_ships_description
+    print Repl.place_two_unit_ship
     @player.set_two_element_ship_on_grid(gets.chomp.upcase)
-    print @repl.place_three_unit_ship
+    print Repl.place_three_unit_ship
     @player.set_three_element_ship_on_grid(gets.chomp.upcase)
 
-    puts @repl.begin_battle
+    puts Repl.begin_battle
   end
 
 
@@ -84,6 +83,8 @@ class Engine
     @player.convert_guess_input_to_coordinates(guess)
   end
 
+  def shot_sequence(player)
+  end
 
   def player_shot_sequence
     guess_coordinate = get_player_guess
@@ -95,7 +96,7 @@ class Engine
       @comp.ships_grid.mark_hit(guess_coordinate)
       puts @repl.player_hits_computer_ship
       if @comp.ships_grid.two_ship.sunk?
-        puts @repl.player_sunk_computers_ship(2)
+        puts Repl.player_sunk_computers_ship(2)
       end
     else
       hit = @comp.ships_grid.three_ship.hit?(guess_coordinate)
@@ -104,22 +105,22 @@ class Engine
         @comp.ships_grid.mark_hit(guess_coordinate)
         puts @repl.player_hits_computer_ship
         if @comp.ships_grid.three_ship.sunk?
-          puts @repl.player_sunk_computers_ship(3)
+          puts Repl.player_sunk_computers_ship(3)
         end
       else
         @player.guesses_grid.mark_miss(guess_coordinate)
         @comp.ships_grid.mark_miss(guess_coordinate)
-        puts @repl.player_misses_computer_ship
+        puts Repl.player_misses_computer_ship
       end
     end
     if @comp.ships_grid.two_ship.sunk? && @comp.ships_grid.three_ship.sunk?
       puts @player.guesses_grid.grid_to_string
-      puts @repl.player_wins_game
-      puts @repl.num_of_shots(@player.guesses.count/2)
+      puts Repl.player_wins_game
+      puts Repl.num_of_shots(@player.guesses.count)
       true
     else
       puts @player.guesses_grid.grid_to_string
-      puts @repl.enter_to_contiue
+      puts Repl.enter_to_contiue
       gets.chomp
       false
     end
