@@ -114,6 +114,7 @@ class Engine
     if @comp.ships_grid.two_ship.sunk? && @comp.ships_grid.three_ship.sunk?
       puts @player.guesses_grid.grid_to_string
       puts @repl.player_wins_game
+      puts @repl.num_of_shots(@player.guesses.count)
       true
     else
       puts @player.guesses_grid.grid_to_string
@@ -155,6 +156,7 @@ class Engine
     if @player.ships_grid.two_ship.sunk? && @player.ships_grid.three_ship.sunk?
       puts @player.ships_grid.grid_to_string
       puts @repl.computer_wins_game
+      puts @repl.num_of_shots(@comp.guesses.count)
       true
     else
       puts @player.ships_grid.grid_to_string

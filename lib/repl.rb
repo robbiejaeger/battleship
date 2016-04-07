@@ -83,4 +83,9 @@ class Repl
     "The total time of the game was #{mins} minutes and #{secs} seconds."
   end
 
+  def num_of_shots(num)
+    "It took #{num} shots to sink all of the ships."
+  end
+
+
 end
