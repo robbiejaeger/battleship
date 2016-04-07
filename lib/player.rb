@@ -32,7 +32,7 @@ class Player
   end
 
 
-  def get_guess(input)
+  def test_guess(input)
     guess_coordinates = convert_guess_input_to_coordinates(input)
     # Need to test if this is within the boundary of the grid
     if ([guess_coordinates] & @guesses).empty?

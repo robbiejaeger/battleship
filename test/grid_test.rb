@@ -33,4 +33,30 @@ class GridTest < Minitest::Test
     assert_equal string, grid_string
   end
 
+  def test_can_mark_point_with_miss
+    player = Player.new
+    string = "   1  2  3  4\n"\
+             "A  M  .  .  .\n"\
+             "B  .  .  .  .\n"\
+             "C  .  .  .  .\n"\
+             "D  .  .  .  .\n"
+
+    player.ships_grid.mark_miss([0,0])
+
+    assert_equal string, player.ships_grid.grid_to_string
+  end
+
+  def test_can_mark_point_with_hit
+    player = Player.new
+    string = "   1  2  3  4\n"\
+             "A  H  .  .  .\n"\
+             "B  .  .  .  .\n"\
+             "C  .  .  .  .\n"\
+             "D  .  .  .  .\n"
+
+    player.ships_grid.mark_hit([0,0])
+
+    assert_equal string, player.ships_grid.grid_to_string
+  end
+
 end

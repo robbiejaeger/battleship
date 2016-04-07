@@ -55,9 +55,8 @@ class Engine
     while game_over == false
       print @repl.get_players_shot(@player.guesses_grid.grid_to_string)
 
-      player_shot_sequence
-
-      game_over = true
+      game_over = player_shot_sequence
+      game_over = computer_shot_sequence
     end
   end
 
@@ -74,14 +73,47 @@ class Engine
   def get_player_guess
     valid_guess = false
     while valid_guess == false
-      valid_guess = @player.get_guess(gets.chomp)
+      guess = gets.chomp
+      valid_guess = @player.test_guess(guess)
     end
+    @player.convert_guess_input_to_coordinates(guess)
   end
 
 
   def player_shot_sequence
-    get_player_guess
-    
+    guess_coordinate = get_player_guess
+    @player.guesses << guess_coordinate
+    hit = @comp.ships_grid.two_ship.hit?(guess_coordinate)
+    # test is player has hit computer's ship
+    if hit
+      @player.guesses_grid.mark_hit(guess_coordinate)
+      @comp.ships_grid.mark_hit(guess_coordinate)
+      puts @repl.player_hits_computer_ship
+    else
+      hit = @comp.ships_grid.three_ship.hit?(guess_coordinate)
+      if hit
+        @player.guesses_grid.mark_hit(guess_coordinate)
+        @comp.ships_grid.mark_hit(guess_coordinate)
+        puts @repl.player_hits_computer_ship
+      else
+        @player.guesses_grid.mark_miss(guess_coordinate)
+        @comp.ships_grid.mark_miss(guess_coordinate)
+        puts @repl.player_misses_computer_ship
+      end
+    end
+    if @comp.ships_grid.two_ship.sunk? && @comp.ships_grid.three_ship.sunk?
+      puts @player.guesses_grid.grid_to_string
+      puts @repl.player_wins_game
+      true
+    else
+      puts @player.guesses_grid.grid_to_string
+      puts @repl.enter_to_contiue
+      gets.chomp
+      false
+    end
+  end
+
+  def computer_shot_sequence
   end
 
 end

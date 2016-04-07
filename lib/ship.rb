@@ -14,7 +14,6 @@ class Ship
   def hit?(guess_coordinate)
     return false if (@coordinates & [guess_coordinate]).empty?
     @coordinates_hit << guess_coordinate
-    # true
   end
 
 

@@ -28,7 +28,7 @@ class Repl
   def get_players_shot(player_guess_grid)
     "Your hit and miss history:\n"\
     "#{player_guess_grid}\n"\
-    "What is your next shot? "
+    "Where do you want to shoot? "
   end
 
   def player_hits_computer_ship
@@ -53,6 +53,18 @@ class Repl
 
   def computer_sinks_players_ship
     "Oh no! Your ship has been sunk!"
+  end
+
+  def player_wins_game
+    "Congratulations! You've sunk all of your opponent's ships!"
+  end
+
+  def computer_wins_game
+    "Sorry, you've lost! All of your ships have been sunk!"
+  end
+
+  def enter_to_contiue
+    "Press ENTER to continue."
   end
 
 end

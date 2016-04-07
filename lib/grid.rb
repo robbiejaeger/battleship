@@ -17,4 +17,12 @@ class Grid
 
   end
 
+  def mark_hit(coordinate)
+    @grid[coordinate[0]][coordinate[1]] = "H"
+  end
+
+  def mark_miss(coordinate)
+    @grid[coordinate[0]][coordinate[1]] = "M"
+  end
+
 end
