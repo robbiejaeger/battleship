@@ -64,6 +64,7 @@ class Engine
 
 
   def player_put_ships_on_grid
+    puts @player.guesses_grid.grid_to_string
     puts @repl.place_ships_description
     print @repl.place_two_unit_ship
     @player.set_two_element_ship_on_grid(gets.chomp.upcase)
