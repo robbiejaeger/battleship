@@ -47,12 +47,12 @@ class Repl
     "A lucky miss!"
   end
 
-  def player_sunk_computers_ship
-    "You've sunk a ship!"
+  def player_sunk_computers_ship(num)
+    "Yes! You've sunk a ship of size #{num}!"
   end
 
-  def computer_sinks_players_ship
-    "Oh no! Your ship has been sunk!"
+  def computer_sunk_players_ship(num)
+    "Oh no! Your ship of size #{num} has been sunk!"
   end
 
   def player_wins_game

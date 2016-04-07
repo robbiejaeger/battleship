@@ -93,12 +93,18 @@ class Engine
       @player.guesses_grid.mark_hit(guess_coordinate)
       @comp.ships_grid.mark_hit(guess_coordinate)
       puts @repl.player_hits_computer_ship
+      if @comp.ships_grid.two_ship.sunk?
+        puts @repl.player_sunk_computers_ship(2)
+      end
     else
       hit = @comp.ships_grid.three_ship.hit?(guess_coordinate)
       if hit
         @player.guesses_grid.mark_hit(guess_coordinate)
         @comp.ships_grid.mark_hit(guess_coordinate)
         puts @repl.player_hits_computer_ship
+        if @comp.ships_grid.three_ship.sunk?
+          puts @repl.player_sunk_computers_ship(3)
+        end
       else
         @player.guesses_grid.mark_miss(guess_coordinate)
         @comp.ships_grid.mark_miss(guess_coordinate)
@@ -128,12 +134,18 @@ class Engine
       @comp.guesses_grid.mark_hit(guess_coordinate)
       @player.ships_grid.mark_hit(guess_coordinate)
       puts @repl.computer_hits_players_ship
+      if @player.ships_grid.two_ship.sunk?
+        puts @repl.computer_sunk_players_ship(2)
+      end
     else
       hit = @player.ships_grid.three_ship.hit?(guess_coordinate)
       if hit
         @comp.guesses_grid.mark_hit(guess_coordinate)
         @player.ships_grid.mark_hit(guess_coordinate)
         puts @repl.computer_hits_players_ship
+        if @player.ships_grid.three_ship.sunk?
+          puts @repl.computer_sunk_players_ship(3)
+        end
       else
         @comp.guesses_grid.mark_miss(guess_coordinate)
         @player.ships_grid.mark_miss(guess_coordinate)
