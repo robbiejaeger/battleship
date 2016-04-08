@@ -12,7 +12,6 @@ class Engine
     @comp = Computer.new
   end
 
-
   def start_game_sequence
     quit = false
     until quit == true
@@ -21,7 +20,6 @@ class Engine
       quit = decide_to_play_or_quit(answer)
     end
   end
-
 
   def decide_to_play_or_quit(answer)
     if answer == 'p' || answer == 'play'
@@ -33,7 +31,6 @@ class Engine
       true
     end
   end
-
 
   def play
     @gametime.set_start_time(Time.now)
@@ -49,7 +46,6 @@ class Engine
     true
   end
 
-
   def shoot_at_each_other_until_winner
     game_over = false
     until game_over == true
@@ -63,7 +59,6 @@ class Engine
     end
   end
 
-
   def player_put_ships_on_grid
     puts @player.guesses_grid.grid_to_string
     puts Repl.place_ships_description
@@ -75,22 +70,11 @@ class Engine
     puts Repl.begin_battle
   end
 
-
-  def get_player_guess
-    valid_guess = false
-    while valid_guess == false
-      guess = gets.chomp.upcase
-      valid_guess = @player.test_guess(guess)
-    end
-    @player.convert_guess_input_to_coordinates(guess)
-  end
-
-  def shot_sequence(player)
-  end
+  # def shot_sequence(player)
+  # end
 
   def player_shot_sequence
-    guess_coordinate = get_player_guess
-    @player.guesses << guess_coordinate
+    guess_coordinate = @player.guess
 
     hit = @comp.ships_grid.two_ship.hit?(guess_coordinate)
     if hit
